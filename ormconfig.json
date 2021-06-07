@@ -1,0 +1,13 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "29gu09il",
+  "database": "ds1",
+  "entities": ["./src/modules/**/models/*.ts"],
+  "migrations": ["./src/shared/database/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/shared/database/migrations"
+  }
+}
