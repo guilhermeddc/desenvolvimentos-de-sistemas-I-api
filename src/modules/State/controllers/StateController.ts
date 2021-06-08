@@ -9,7 +9,7 @@ class StateController {
   public async index(req: Request, res: Response) {
     const indexState = new IndexStateService();
 
-    const states = indexState.execute();
+    const states = await indexState.execute();
 
     return res.json(states);
   }

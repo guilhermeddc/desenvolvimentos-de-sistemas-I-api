@@ -9,7 +9,7 @@ class ClientController {
   public async index(req: Request, res: Response) {
     const indexClient = new IndexClientService();
 
-    const cities = indexClient.execute();
+    const cities = await indexClient.execute();
 
     return res.json(cities);
   }
@@ -19,7 +19,7 @@ class ClientController {
 
     const indexClient = new IndexClientByCityService();
 
-    const clients = indexClient.execute(city_id);
+    const clients = await indexClient.execute(city_id);
 
     return res.json(clients);
   }

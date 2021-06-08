@@ -9,7 +9,9 @@ class ActivityController {
   public async index(req: Request, res: Response) {
     const indexActivity = new IndexActivityService();
 
-    const activities = indexActivity.execute();
+    const activities = await indexActivity.execute();
+
+    console.log(activities);
 
     return res.json(activities);
   }

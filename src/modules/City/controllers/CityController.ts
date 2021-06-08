@@ -10,7 +10,7 @@ class CityController {
   public async index(req: Request, res: Response) {
     const indexCity = new IndexCityService();
 
-    const cities = indexCity.execute();
+    const cities = await indexCity.execute();
 
     return res.json(cities);
   }
@@ -20,7 +20,7 @@ class CityController {
 
     const indexCity = new IndexCityByStateService();
 
-    const cities = indexCity.execute(state_id);
+    const cities = await indexCity.execute(state_id);
 
     return res.json(cities);
   }
