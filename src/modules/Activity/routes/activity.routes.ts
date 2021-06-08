@@ -9,7 +9,7 @@ routes.get('/', ActivityController.index);
 
 routes.use(auth);
 routes.post('/', ActivityController.create);
-routes.put('/:activityId', ActivityController.update);
-routes.delete('/:activityId', ActivityController.delete);
+routes.put('/:activity_id', ActivityController.update);
+routes.delete('/:activity_id', ActivityController.delete);
 
 export default routes;

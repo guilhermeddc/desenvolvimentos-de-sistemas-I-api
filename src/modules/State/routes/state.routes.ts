@@ -9,7 +9,7 @@ routes.get('/', StateController.index);
 
 routes.use(auth);
 routes.post('/', StateController.create);
-routes.put('/:stateId', StateController.update);
-routes.delete('/:stateId', StateController.delete);
+routes.put('/:state_id', StateController.update);
+routes.delete('/:state_id', StateController.delete);
 
 export default routes;

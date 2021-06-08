@@ -25,22 +25,22 @@ class StateController {
   }
 
   public async delete(req: Request, res: Response) {
-    const {stateId} = req.params;
+    const {state_id} = req.params;
 
     const deleteState = new DeleteStateService();
 
-    const stateDeleted = await deleteState.execute(stateId);
+    const stateDeleted = await deleteState.execute(state_id);
 
     return res.json(stateDeleted);
   }
 
   public async update(req: Request, res: Response) {
-    const {stateId} = req.params;
+    const {state_id} = req.params;
     const stateBody = req.body;
 
     const updateState = new UpdateStateService();
 
-    const state = await updateState.execute(stateId, stateBody);
+    const state = await updateState.execute(state_id, stateBody);
 
     return res.json(state);
   }

@@ -25,22 +25,22 @@ class ActivityController {
   }
 
   public async delete(req: Request, res: Response) {
-    const {activityId} = req.params;
+    const {activity_id} = req.params;
 
     const deleteActivity = new DeleteActivityService();
 
-    const activityDeleted = await deleteActivity.execute(activityId);
+    const activityDeleted = await deleteActivity.execute(activity_id);
 
     return res.json(activityDeleted);
   }
 
   public async update(req: Request, res: Response) {
-    const {activityId} = req.params;
+    const {activity_id} = req.params;
     const activityBody = req.body;
 
     const updateActivity = new UpdateActivityService();
 
-    const activity = await updateActivity.execute(activityId, activityBody);
+    const activity = await updateActivity.execute(activity_id, activityBody);
 
     return res.json(activity);
   }
