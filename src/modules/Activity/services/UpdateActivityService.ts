@@ -16,7 +16,7 @@ class UpdateActivityService {
       where: {id},
     });
 
-    if (!activity) throw new AppError('Cidade inexistente', 401);
+    if (!activity) throw new AppError('Atividade inexistente', 401);
 
     if (name) activity.name = name;
 

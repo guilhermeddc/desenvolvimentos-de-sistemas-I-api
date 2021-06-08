@@ -15,7 +15,7 @@ class DeleteActivityService {
       where: {id},
     });
 
-    if (!activity) throw new AppError('Cidade não existe.');
+    if (!activity) throw new AppError('Atividade não existe.');
 
     await activityRepository.delete(activity);
 

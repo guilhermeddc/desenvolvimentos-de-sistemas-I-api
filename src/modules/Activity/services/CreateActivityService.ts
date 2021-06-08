@@ -1,4 +1,5 @@
 import {getCustomRepository} from 'typeorm';
+import AppError from '../../../shared/errors/AppError';
 
 import Activity from '../models/Activity';
 import ActivityRepository from '../repositories/ActivityRepository';
@@ -10,6 +11,12 @@ interface IRequest {
 class CreateActivityService {
   public async execute({name}: IRequest): Promise<Activity | null> {
     const activityRepository = getCustomRepository(ActivityRepository);
+
+    const activityExists = await activityRepository.findOne({
+      where: {name},
+    });
+
+    if (activityExists) throw new AppError('Atividade já existe', 401);
 
     const activity = activityRepository.create({
       name,
