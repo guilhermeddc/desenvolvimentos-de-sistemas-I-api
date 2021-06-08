@@ -11,13 +11,13 @@ class User {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column()
+  @Column({unique: true})
   email: string;
 
   @Column()
   password: string;
 
-  @Column()
+  @Column({default: 'provider'})
   user_type: string;
 
   @CreateDateColumn()

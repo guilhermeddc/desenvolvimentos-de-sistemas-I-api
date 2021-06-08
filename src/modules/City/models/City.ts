@@ -5,6 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+
 import State from '../../State/models/State';
 
 @Entity('cities')
@@ -21,9 +22,6 @@ class City {
   @ManyToOne(type => State, state => State)
   @JoinColumn({name: 'state_id'})
   state: State;
-
-  @Column()
-  uf: string;
 }
 
 export default City;
