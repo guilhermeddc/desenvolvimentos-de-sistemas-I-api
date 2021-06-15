@@ -12,11 +12,9 @@ class CreateActivityService {
   public async execute({name}: IRequest): Promise<Activity | null> {
     const activityRepository = getCustomRepository(ActivityRepository);
 
-    const activityExists = await activityRepository.findOne({
-      where: {name},
-    });
+    const activityExists = await activityRepository.findByName(name);
 
-    if (activityExists) throw new AppError('Atividade já existe', 401);
+    if (activityExists) throw new AppError('Atividade já existe', 400);
 
     const activity = activityRepository.create({
       name,

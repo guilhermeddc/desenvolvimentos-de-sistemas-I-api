@@ -7,7 +7,11 @@ class IndexActivityService {
   public async execute(): Promise<Activity[] | null> {
     const activityRepository = getCustomRepository(ActivityRepository);
 
-    const activities = await activityRepository.find();
+    const activities = await activityRepository.find({
+      order: {
+        name: 'ASC',
+      },
+    });
 
     return activities || null;
   }

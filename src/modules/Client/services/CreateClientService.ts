@@ -34,11 +34,9 @@ class CreateClientService {
   }: IRequest): Promise<Client | null> {
     const clientRepository = getCustomRepository(ClientRepository);
 
-    const clientExists = await clientRepository.findOne({
-      where: {email},
-    });
+    const clientExists = await clientRepository.findByEmail(email);
 
-    if (!clientExists) throw new AppError('Cliente já existe.');
+    if (clientExists) throw new AppError('Cliente já existe.', 400);
 
     const client = clientRepository.create({
       name,

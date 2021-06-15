@@ -15,7 +15,7 @@ class DeleteCityService {
       where: {id},
     });
 
-    if (!city) throw new AppError('Cidade não existe.');
+    if (!city) throw new AppError('Cidade não existe.', 400);
 
     await cityRepository.delete(city);
 

@@ -9,6 +9,10 @@ class IndexCityByStateService {
 
     const cities = await cityRepository.find({
       where: {state_id},
+      order: {
+        name: 'ASC',
+      },
+      relations: ['state'],
     });
 
     return cities || null;

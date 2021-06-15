@@ -6,43 +6,43 @@ import UpdateStateService from '../services/UpdateStateService';
 import IndexStateService from '../services/IndexStateService';
 
 class StateController {
-  public async index(req: Request, res: Response) {
+  public async index(request: Request, response: Response) {
     const indexState = new IndexStateService();
 
     const states = await indexState.execute();
 
-    return res.json(states);
+    return response.json(states);
   }
 
-  public async create(req: Request, res: Response) {
-    const stateBody = req.body;
+  public async create(request: Request, response: Response) {
+    const stateBody = request.body;
 
     const createState = new CreateStateService();
 
     const state = await createState.execute(stateBody);
 
-    return res.json(state);
+    return response.json(state);
   }
 
-  public async delete(req: Request, res: Response) {
-    const {state_id} = req.params;
+  public async delete(request: Request, response: Response) {
+    const {state_id} = request.params;
 
     const deleteState = new DeleteStateService();
 
     const stateDeleted = await deleteState.execute(state_id);
 
-    return res.json(stateDeleted);
+    return response.json(stateDeleted);
   }
 
-  public async update(req: Request, res: Response) {
-    const {state_id} = req.params;
-    const stateBody = req.body;
+  public async update(request: Request, response: Response) {
+    const {state_id} = request.params;
+    const stateBody = request.body;
 
     const updateState = new UpdateStateService();
 
     const state = await updateState.execute(state_id, stateBody);
 
-    return res.json(state);
+    return response.json(state);
   }
 }
 

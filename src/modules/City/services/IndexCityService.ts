@@ -7,7 +7,12 @@ class IndexCityService {
   public async execute(): Promise<City[] | null> {
     const cityRepository = getCustomRepository(CityRepository);
 
-    const cities = await cityRepository.find();
+    const cities = await cityRepository.find({
+      order: {
+        name: 'ASC',
+      },
+      relations: ['state'],
+    });
 
     return cities || null;
   }

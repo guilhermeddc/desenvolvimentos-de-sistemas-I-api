@@ -9,6 +9,10 @@ class IndexClientByClientService {
 
     const clients = await clientRepository.find({
       where: {city_id},
+      order: {
+        name: 'ASC',
+      },
+      relations: ['city', 'activity'],
     });
 
     return clients || null;

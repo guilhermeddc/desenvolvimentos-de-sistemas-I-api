@@ -7,7 +7,11 @@ class IndexStateService {
   public async execute(): Promise<State[] | null> {
     const stateRepository = getCustomRepository(StateRepository);
 
-    const states = await stateRepository.find();
+    const states = await stateRepository.find({
+      order: {
+        name: 'ASC',
+      },
+    });
 
     return states || null;
   }

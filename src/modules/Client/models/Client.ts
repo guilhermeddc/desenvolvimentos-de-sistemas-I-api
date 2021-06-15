@@ -26,6 +26,9 @@ class Client {
   @Column()
   phone: string;
 
+  @Column({nullable: true})
+  logo: string;
+
   @Column()
   address: string;
 

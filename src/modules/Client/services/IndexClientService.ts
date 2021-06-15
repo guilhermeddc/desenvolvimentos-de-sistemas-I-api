@@ -7,7 +7,12 @@ class IndexClientService {
   public async execute(): Promise<Client[] | null> {
     const clientRepository = getCustomRepository(ClientRepository);
 
-    const clients = await clientRepository.find();
+    const clients = await clientRepository.find({
+      order: {
+        name: 'ASC',
+      },
+      relations: ['city', 'activity'],
+    });
 
     return clients || null;
   }
